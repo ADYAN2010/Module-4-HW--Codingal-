@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, select {
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>JavaScript: Methods, Loops, and Switch</h2>
+
+<select id="option">
+  <option value="sum">Sum from 1 to N (using for loop)</option>
+  <option value="even">First N Even Numbers (using while loop)</option>
+  <option value="day">Day of the Week (using switch)</option>
+</select>
+
+<br>
+
+<input type="number" id="inputNumber" placeholder="Enter a number (e.g., 5)">
+<button onclick="runProgram()">Run</button>
+
+<p id="result"></p>
+
+<script>
+// Method (function)
+function runProgram() {
+  const option = document.getElementById("option").value;
+  const n = parseInt(document.getElementById("inputNumber").value);
+  const result = document.getElementById("result");
+
+  switch(option) {
+    case "sum":
+      // For loop
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      result.textContent = `Sum from 1 to ${n} is ${sum}`;
+      break;
+
+    case "even":
+      // While loop
+      let count = 0, num = 0, evens = [];
+      while (count < n) {
+        if (num % 2 === 0) {
+          evens.push(num);
+          count++;
+        }
+        num++;
+      }
+      result.textContent = `First ${n} even numbers: ${evens.join(", ")}`;
+      break;
+
+    case "day":
+      // Switch statement
+      switch(n) {
+        case 1: result.textContent = "Monday"; break;
+        case 2: result.textContent = "Tuesday"; break;
+        case 3: result.textContent = "Wednesday"; break;
+        case 4: result.textContent = "Thursday"; break;
+        case 5: result.textContent = "Friday"; break;
+        case 6: result.textContent = "Saturday"; break;
+        case 7: result.textContent = "Sunday"; break;
+        default: result.textContent = "Enter a number from 1 to 7.";
+      }
+      break;
+
+    default:
+      result.textContent = "Invalid option.";
+  }
+}
+</script>
+
+</body>
+</html>
