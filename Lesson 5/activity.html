@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Adyan - Object & Array Operations</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+    h2 {
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-size: 1.5em;
+      color: #007BFF;
+    }
+    pre {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      white-space: pre-wrap;
+    }
+    .btn-group {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px 10px 10px 0;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    @media (max-width: 600px) {
+      .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🔑 Object Key-Value Display</h2>
+    <pre id="objectOutput"></pre>
+
+    <h2>🔢 Array Index Display</h2>
+    <pre id="arrayOutput"></pre>
+
+    <h2>⚙️ Array Methods Demo</h2>
+    <div class="btn-group">
+      <button class="btn" onclick="pushToArray()">Push</button>
+      <button class="btn" onclick="popFromArray()">Pop</button>
+      <button class="btn" onclick="shiftFromArray()">Shift</button>
+      <button class="btn" onclick="unshiftToArray()">Unshift</button>
+      <button class="btn" onclick="resetArray()">Reset</button>
+    </div>
+    <pre id="methodOutput"></pre>
+  </div>
+
+  <script>
+    // Object: Adyan's Info
+    const student = {
+      name: "Adyan",
+      age: 15,
+      grade: "9",
+      city: "Dhanmondi, Dhaka"
+    };
+
+    // Array: Marks
+    const marks = [80, 85, 90, 95];
+
+    // Array for method demonstration
+    let numbers = [10, 20, 30];
+
+    // Display object key-value pairs
+    function displayObject() {
+      const output = Object.entries(student)
+        .map(([key, val]) => `${key}: ${val}`)
+        .join('\n');
+      document.getElementById("objectOutput").textContent = output;
+    }
+
+    // Display array by index
+    function displayArray() {
+      const output = marks.map((val, index) => `Index ${index}: ${val}`).join('\n');
+      document.getElementById("arrayOutput").textContent = output;
+    }
+
+    // Update method output
+    function updateMethodOutput() {
+      document.getElementById("methodOutput").textContent = `Current Array: [ ${numbers.join(', ')} ]`;
+    }
+
+    // Array method buttons
+    function pushToArray() {
+      numbers.push(40);
+      updateMethodOutput();
+    }
+
+    function popFromArray() {
+      if (numbers.length > 0) numbers.pop();
+      updateMethodOutput();
+    }
+
+    function shiftFromArray() {
+      if (numbers.length > 0) numbers.shift();
+      updateMethodOutput();
+    }
+
+    function unshiftToArray() {
+      numbers.unshift(5);
+      updateMethodOutput();
+    }
+
+    function resetArray() {
+      numbers = [10, 20, 30];
+      updateMethodOutput();
+    }
+
+    // Load data on page load
+    displayObject();
+    displayArray();
+    updateMethodOutput();
+  </script>
+
+</body>
+</html>
